@@ -7,6 +7,9 @@
     <groupId>com.featureprobe</groupId>
     <artifactId>featureprobe-spring-boot-starter</artifactId>
     <version>1.4.0</version>
+    <name>featureprobe-spring-boot-starter</name>
+    <url>https://github.com/FeatureProbe/featureprobe-spring-boot-starter</url>
+    <description>FeatureProbe Server Side SDK for Spring Boot</description>
 
     <developers>
         <developer>
