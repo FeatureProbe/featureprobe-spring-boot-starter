@@ -1,7 +1,7 @@
 # FeatureProbe Spring Boot Starter
 
-[![GitHub Star](https://img.shields.io/github/stars/FeatureProbe/server-sdk-java)](https://github.com/FeatureProbe/featureprobe-spring-boot-starter/stargazers)
-[![License](https://img.shields.io/github/license/FeatureProbe/server-sdk-java)](https://github.com/FeatureProbe/featureprobe-spring-boot-starter/blob/main/LICENSE)
+[![GitHub Star](https://img.shields.io/github/stars/FeatureProbe/featureprobe-spring-boot-starter)](https://github.com/FeatureProbe/featureprobe-spring-boot-starter/stargazers)
+[![License](https://img.shields.io/github/license/FeatureProbe/featureprobe-spring-boot-starter)](https://github.com/FeatureProbe/featureprobe-spring-boot-starter/blob/main/LICENSE)
 
 FeatureProbe-Spring-Boot-Starter will help you to use FeatureProbe with Spring Boot
 
