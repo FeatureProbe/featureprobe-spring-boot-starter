@@ -1,0 +1,46 @@
+name: Publish package to the Maven Central Repository
+
+on:
+  push:
+    tags: [ "*" ]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Maven Central Repository
+        uses: actions/setup-java@v2
+        with:
+          java-version: '8'
+          distribution: 'adopt'
+          server-id: ossrh
+          server-username: MAVEN_USERNAME
+          server-password: MAVEN_PASSWORD
+
+      - id: install-secret-key
+        name: Install gpg secret key
+        run: |
+          cat <(echo -e "${{ secrets.OSSRH_GPG_SECRET_KEY }}") | gpg --batch --import
+          gpg --list-secret-keys --keyid-format LONG
+      - name: Publish package
+        env:
+          MAVEN_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.OSSRH_TOKEN }}
+        run: mvn --batch-mode -Dgpg.passphrase=${{ secrets.OSSRH_GPG_SECRET_KEY_PASSWORD }} clean deploy
+
+      - name: Guess Dependency Declaration Version
+        run: |
+          cd .github
+          javac ReadmeUpdater.java
+          java ReadmeUpdater ${{github.ref_name}}
+          rm -f ReadmeUpdater.class
+      - name: Propose a PR to Update Readme
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: main
+          author: GitHub Actions <41898282+github-actions[bot]@users.noreply.github.com>
+          commit-message: "chore: update maven and gradle dependency declarations"
+          title: "chore: update maven and gradle dependency declarations"
+          body: Update version info in dependency declarations to `${{github.ref_name}}`.
+          branch: readme-dep-ver
