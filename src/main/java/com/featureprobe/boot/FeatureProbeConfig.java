@@ -16,6 +16,8 @@ public class FeatureProbeConfig {
     @NotBlank
     private String synchronizerUrl;
 
+    private String realtimeUri;
+
     @NotBlank
     private String eventUrl;
 
@@ -23,6 +25,8 @@ public class FeatureProbeConfig {
     private Long startWait;
 
     private Long refreshInterval;
+
+
 
     public String getSdkKey() {
         return sdkKey;
@@ -62,5 +66,13 @@ public class FeatureProbeConfig {
 
     public void setRefreshInterval(Long refreshInterval) {
         this.refreshInterval = refreshInterval;
+    }
+
+    public String getRealtimeUri() {
+        return realtimeUri;
+    }
+
+    public void setRealtimeUri(String realtimeUri) {
+        this.realtimeUri = realtimeUri;
     }
 }
